@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { org, quickActions, waterQuality } from "@/lib/content";
 import {
-  DropletIcon,
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
   quickActionIcon,
 } from "@/components/icons";
+
+const actionHref: Record<string, string> = { pay: "/pay", leak: "/report-leak", service: "/start-stop" };
 
 export const metadata = { title: `${org.name} — Pay your water bill online` };
 
@@ -35,12 +36,7 @@ export default function CivicBlueHome() {
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white">
-              <DropletIcon className="h-6 w-6" />
-            </span>
-            <span className="text-base font-bold leading-tight text-slate-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">{org.name}</Link>
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((n) => (
               <a key={n.label} href={n.href} className="text-sm font-semibold text-slate-600 transition hover:text-blue-700">
@@ -78,9 +74,9 @@ export default function CivicBlueHome() {
                 >
                   Pay My Bill <ArrowRightIcon className="h-6 w-6" />
                 </Link>
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-7 py-5 text-base font-semibold text-white backdrop-blur transition hover:bg-white/10">
+                <Link href="/report-leak" className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-7 py-5 text-base font-semibold text-white backdrop-blur transition hover:bg-white/10">
                   Report a Leak
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -91,7 +87,7 @@ export default function CivicBlueHome() {
           <div className="grid gap-6 md:grid-cols-3">
             {quickActions.map((a) => {
               const Icon = quickActionIcon[a.key as keyof typeof quickActionIcon];
-              const href = a.href === "pay" ? "/pay" : "#contact";
+              const href = actionHref[a.key] ?? "#contact";
               return (
                 <Link key={a.key} href={href} className="group flex items-start gap-4 rounded-2xl border border-slate-200 p-6 transition hover:border-blue-300 hover:shadow-lg hover:shadow-blue-900/5">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">

@@ -9,7 +9,6 @@ import {
 } from "@/lib/mockAccounts";
 import { usePortalFlow, formatCurrency } from "@/lib/usePortalFlow";
 import {
-  DropletIcon,
   CheckIcon,
   CardIcon,
   ArrowRightIcon,
@@ -28,12 +27,7 @@ export default function CivicBluePortal() {
     <div className="min-h-screen bg-slate-50 text-slate-700">
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
-              <DropletIcon className="h-5 w-5" />
-            </span>
-            <span className="text-sm font-bold text-slate-900">{org.name}</span>
-          </Link>
+          <Link href="/" className="text-sm font-bold text-slate-900">{org.name}</Link>
           <Link href="/" className="text-sm text-slate-500 hover:text-blue-700">
             ← Back to site
           </Link>
