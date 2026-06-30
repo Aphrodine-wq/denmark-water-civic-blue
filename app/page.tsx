@@ -86,7 +86,7 @@ export default function CivicBlueHome() {
                 {org.tagline}
               </h1>
               <p className="mt-5 max-w-md text-lg text-slate-200">
-                Pay your water bill online in under a minute — no account to create, no trip to the office.
+                Pay your water bill online anytime — just have your account number ready.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <Link
@@ -153,7 +153,7 @@ export default function CivicBlueHome() {
           <div className="flex flex-col items-start justify-between gap-10 rounded-3xl bg-blue-600 p-10 text-white md:flex-row md:items-center md:p-14">
             <div>
               <h2 className="text-3xl font-bold">Ready to pay your bill?</h2>
-              <p className="mt-2 max-w-sm text-blue-100">It takes about a minute. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
+              <p className="mt-2 max-w-sm text-blue-100">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
             </div>
             <Link href="/pay" className="inline-flex items-center gap-2.5 rounded-xl bg-white px-9 py-5 text-xl font-bold text-blue-700 shadow-lg transition hover:bg-blue-50">
               Pay My Bill <ArrowRightIcon className="h-6 w-6" />
