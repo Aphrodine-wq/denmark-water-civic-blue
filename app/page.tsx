@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality } from "@/lib/content";
+import { org, quickActions, waterQuality, alertNotice } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -22,6 +22,15 @@ const nav = [
 export default function CivicBlueHome() {
   return (
     <div className="min-h-screen bg-white text-slate-700">
+      {/* Service notice — boil-water / flushing / outage banner the office can post. */}
+      {alertNotice.active && (
+        <div className="bg-blue-700 text-blue-50">
+          <div className="mx-auto flex max-w-6xl items-start gap-3 px-6 py-2.5 text-sm">
+            <span className="mt-0.5 shrink-0 rounded bg-blue-800 px-3 py-0.5 text-xs font-bold uppercase tracking-wide">{alertNotice.label}</span>
+            <p className="text-blue-50">{alertNotice.message}</p>
+          </div>
+        </div>
+      )}
       {/* Utility bar */}
       <div className="hidden bg-slate-900 text-slate-300 md:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 text-xs">
@@ -52,6 +61,18 @@ export default function CivicBlueHome() {
           </Link>
         </div>
       </header>
+
+      {/* Mobile quick bar — tap-to-call + section nav (desktop gets the utility bar + full nav). */}
+      <div className="border-b border-slate-200 bg-white lg:hidden">
+        <div className="flex items-center gap-1 overflow-x-auto px-4 py-2 text-sm">
+          <a href={`tel:${org.phone}`} className="flex shrink-0 items-center gap-1.5 rounded-lg bg-blue-50 px-3 py-1.5 font-semibold text-blue-700">
+            <PhoneIcon className="h-4 w-4" /> Call office
+          </a>
+          {nav.filter((n) => n.href.startsWith("#")).map((n) => (
+            <a key={n.label} href={n.href} className="shrink-0 rounded-lg px-3 py-1.5 font-semibold text-slate-600">{n.label}</a>
+          ))}
+        </div>
+      </div>
 
       <main>
         {/* Hero */}
@@ -132,7 +153,7 @@ export default function CivicBlueHome() {
           <div className="flex flex-col items-start justify-between gap-10 rounded-3xl bg-blue-600 p-10 text-white md:flex-row md:items-center md:p-14">
             <div>
               <h2 className="text-3xl font-bold">Ready to pay your bill?</h2>
-              <p className="mt-2 max-w-sm text-blue-100">It takes about a minute. Questions? Call the office at {org.phone}.</p>
+              <p className="mt-2 max-w-sm text-blue-100">It takes about a minute. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
             </div>
             <Link href="/pay" className="inline-flex items-center gap-2.5 rounded-xl bg-white px-9 py-5 text-xl font-bold text-blue-700 shadow-lg transition hover:bg-blue-50">
               Pay My Bill <ArrowRightIcon className="h-6 w-6" />
@@ -144,7 +165,7 @@ export default function CivicBlueHome() {
       <footer className="border-t border-slate-200 bg-slate-900 py-8 text-slate-300">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-semibold text-white">{org.name}</span>
-          <span className="text-slate-400">{org.address} · {org.phone}</span>
+          <span className="text-slate-400">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-white">{org.phone}</a></span>
           <span className="text-slate-500">© {waterQuality.reportYear}</span>
         </div>
       </footer>
