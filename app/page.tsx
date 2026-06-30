@@ -74,7 +74,7 @@ export default function CivicBlueHome() {
         </div>
       </div>
 
-      <main>
+      <main id="main">
         {/* Hero */}
         <section className="relative isolate overflow-hidden">
           <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />

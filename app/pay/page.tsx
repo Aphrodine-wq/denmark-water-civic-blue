@@ -26,7 +26,7 @@ export default function CivicBluePortal() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-4 py-10">
+      <main id="main" className="mx-auto max-w-4xl px-4 py-10">
         <div className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
           <CardIcon className="h-4 w-4" /> Pay My Bill
         </div>
@@ -52,7 +52,7 @@ export default function CivicBluePortal() {
           >
             Open the EzPay payment portal <ArrowRightIcon className="h-5 w-5" />
           </a>
-          <p className="mt-2 text-center text-xs text-slate-500">Opens your secure payment page in a new tab.</p>
+          <p className="mt-2 text-center text-xs text-slate-600">Opens your secure payment page in a new tab.</p>
         </div>
 
         {/* DESKTOP — embedded portal with an always-visible new-tab fallback. */}
@@ -110,7 +110,7 @@ export default function CivicBluePortal() {
           </div>
         </section>
 
-        <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-slate-400">
+        <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-slate-600">
           <ShieldIcon className="h-4 w-4" /> Payments are securely processed by BBI EzPay.{" "}
           {org.shortName} never sees or stores your card or bank details.
         </p>
