@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { org, quickActions, waterQuality, alertNotice } from "@/lib/content";
+import { org, quickActions, waterQuality, alertNotice, leakCheck, boilWater, conservationTips, assistance, faqs } from "@/lib/content";
 import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
   ArrowRightIcon,
+  CheckIcon,
+  LeakIcon,
+  ShieldIcon,
   quickActionIcon,
 } from "@/components/icons";
 
@@ -16,6 +19,7 @@ const nav = [
   { label: "Pay Bill", href: "/pay" },
   { label: "Services", href: "#services" },
   { label: "Water Quality", href: "#quality" },
+  { label: "Help", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -147,6 +151,72 @@ export default function CivicBlueHome() {
                 ))}
               </dl>
             </div>
+          </div>
+        </section>
+
+        {/* Helpful resources */}
+        <section id="resources" className="border-y border-slate-100 bg-slate-50">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Member help</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">Helpful for members</h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900">
+                  <LeakIcon className="h-5 w-5 text-blue-600" /> {leakCheck.title}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">{leakCheck.intro}</p>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-slate-700 marker:font-semibold marker:text-blue-600">
+                  {leakCheck.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-slate-600">{leakCheck.note}</p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900">
+                  <ShieldIcon className="h-5 w-5 text-blue-600" /> {boilWater.title}
+                </h3>
+                <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-slate-700 marker:font-semibold marker:text-blue-600">
+                  {boilWater.steps.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-xs text-slate-600">{boilWater.note}</p>
+              </div>
+            </div>
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h3 className="text-lg font-bold text-slate-900">Save water, save money</h3>
+              <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {conservationTips.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-slate-700">
+                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" /> {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-7">
+              <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900">
+                <PhoneIcon className="h-5 w-5 text-blue-700" /> {assistance.title}
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">{assistance.body}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="mx-auto max-w-4xl px-6 py-20">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Questions</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">Frequently asked</h2>
+          <div className="mt-8 space-y-3">
+            {faqs.map((f) => (
+              <details key={f.q} className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                <summary className="flex cursor-pointer list-none items-center justify-between font-bold text-slate-900">
+                  {f.q}
+                  <span className="text-blue-600 transition group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-slate-600">{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 
