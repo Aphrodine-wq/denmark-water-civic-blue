@@ -73,7 +73,7 @@ export default function CivicBluePortal() {
           <div className="relative mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             {!loaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-white">
-                <span className="flex items-center gap-3 text-sm text-slate-500">
+                <span className="flex items-center gap-3 text-sm text-slate-600">
                   <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
                   Loading secure payment portal…
                 </span>

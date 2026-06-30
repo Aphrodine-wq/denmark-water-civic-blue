@@ -78,10 +78,11 @@ export default function CivicBlueHome() {
         {/* Hero */}
         <section className="relative isolate overflow-hidden">
           <img src="/images/hero.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/85 via-slate-900/65 to-slate-900/20" />
+          {/* Scrim wraps the text (an ancestor) so contrast holds over the photo and in forced-colors mode. */}
+          <div className="bg-gradient-to-r from-slate-950/95 via-slate-900/88 to-slate-900/45">
           <div className="mx-auto max-w-6xl px-6 py-28 md:py-40">
             <div className="max-w-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">Serving our community since {org.established}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100">Serving our community since {org.established}</p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
                 {org.tagline}
               </h1>
@@ -101,6 +102,7 @@ export default function CivicBlueHome() {
               </div>
             </div>
           </div>
+          </div>
         </section>
 
         {/* Quick actions */}
@@ -116,7 +118,7 @@ export default function CivicBlueHome() {
                   </span>
                   <span>
                     <span className="block font-bold text-slate-900">{a.title}</span>
-                    <span className="mt-1 block text-sm text-slate-500">{a.desc}</span>
+                    <span className="mt-1 block text-sm text-slate-600">{a.desc}</span>
                   </span>
                 </Link>
               );
@@ -140,7 +142,7 @@ export default function CivicBlueHome() {
                 {[["0", "Violations"], ["100%", "Standards met"], [org.membersServed, "Served"]].map(([k, v]) => (
                   <div key={v}>
                     <dt className="text-2xl font-bold text-blue-700">{k}</dt>
-                    <dd className="mt-0.5 text-sm text-slate-500">{v}</dd>
+                    <dd className="mt-0.5 text-sm text-slate-600">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -150,10 +152,10 @@ export default function CivicBlueHome() {
 
         {/* Contact + final CTA */}
         <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex flex-col items-start justify-between gap-10 rounded-3xl bg-blue-600 p-10 text-white md:flex-row md:items-center md:p-14">
+          <div className="flex flex-col items-start justify-between gap-10 rounded-3xl bg-blue-700 p-10 text-white md:flex-row md:items-center md:p-14">
             <div>
               <h2 className="text-3xl font-bold">Ready to pay your bill?</h2>
-              <p className="mt-2 max-w-sm text-blue-100">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
+              <p className="mt-2 max-w-sm text-blue-50">Have your account number ready. Questions? Call the office at <a href={`tel:${org.phone}`} className="font-semibold text-white underline underline-offset-2">{org.phone}</a>.</p>
             </div>
             <Link href="/pay" className="inline-flex items-center gap-2.5 rounded-xl bg-white px-9 py-5 text-xl font-bold text-blue-700 shadow-lg transition hover:bg-blue-50">
               Pay My Bill <ArrowRightIcon className="h-6 w-6" />
@@ -166,7 +168,7 @@ export default function CivicBlueHome() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-sm md:flex-row">
           <span className="font-semibold text-white">{org.name}</span>
           <span className="text-slate-400">{org.address} · <a href={`tel:${org.phone}`} className="hover:text-white">{org.phone}</a></span>
-          <span className="text-slate-500">© {waterQuality.reportYear}</span>
+          <span className="text-slate-400">© {waterQuality.reportYear}</span>
         </div>
       </footer>
     </div>
